@@ -3,6 +3,7 @@ import * as Router from 'koa-router';
 import * as logger from 'koa-logger';
 import * as json from 'koa-json';
 import * as bodyParser from 'koa-bodyparser';
+import * as player from 'play-sound';
 
 const app = new Koa();
 const router = new Router();
@@ -11,15 +12,14 @@ interface AudioRequest {
   filename: string;
 }
 
-router.get('/', async (ctx, next) => {
-  ctx.body = {'wat'};
-  await next();
+router.get('/', async ctx => {
+  player().play('test_audio/idiot.mp3', err => console.log(err));
+  ctx.body = 'wat';
 });
 
-router.post('/audio', async (ctx, next) => {
+router.post('/audio', async ctx => {
   const name = <AudioRequest>ctx.request.body;
   ctx.body = {name};
-  await next();
 });
 
 app.use(json());
