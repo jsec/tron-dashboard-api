@@ -27,15 +27,29 @@ router.get('/:id', async (ctx: Koa.Context) => {
   if (!audio) ctx.throw(HttpStatus.NOT_FOUND);
 
   player().play(audio.filename, (err: any) => console.log(err));
-  ctx.response.status = HttpStatus.OK;
+
+  ctx.status = HttpStatus.OK;
 });
 
 router.post('/', async (ctx: Koa.Context) => {
-  ctx.body = 'play';
+  const audioRepo: Repository<Audio> = getRepository(Audio);
+  const audios: Audio[] = audioRepo.create(ctx.request.body);
+  ctx.body = {
+    data: {audios},
+  };
+
+  ctx.status = HttpStatus.CREATED;
 });
 
 router.delete('/:id', async (ctx: Koa.Context) => {
-  ctx.body = 'delete';
+  const audioRepo: Repository<Audio> = getRepository(Audio);
+  const audio: Audio = await audioRepo.findOne(ctx.params.id);
+
+  if (!audio) ctx.throw(HttpStatus.NOT_FOUND);
+
+  await audioRepo.delete(audio);
+
+  ctx.status = HttpStatus.NO_CONTENT;
 });
 
 export default router;
