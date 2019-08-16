@@ -1,4 +1,4 @@
 tags
 node_modules/
 test_audio/
-lib/data/
+src/lib/data/
