@@ -7,7 +7,7 @@ const parentDir = join(__dirname, '..');
 const options: ConnectionOptions = {
   type: 'sqlite',
   database: `${parentDir}/data/audio.sqlite`,
-  entities: [`${parentDir}/**/*.ts`],
+  entities: [`${parentDir}/entities/**/*.ts`],
   logging: true,
   synchronize: true,
 };
