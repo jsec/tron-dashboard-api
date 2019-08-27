@@ -3,7 +3,7 @@ import * as Koa from 'koa';
 import * as Router from 'koa-router';
 import * as player from 'play-sound';
 import {Repository, getRepository} from 'typeorm';
-import Audio from '../entities/audio';
+import Audio from '../models/audio';
 
 const options: Router.IRouterOptions = {
   prefix: '/audio',

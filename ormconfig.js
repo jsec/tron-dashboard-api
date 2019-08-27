@@ -1,3 +1,3 @@
 module.exports = {
-  seeds: ['src/lib/database/seeds/**/*.ts'],
+  seeds: ['src/db/seeds/**/*.ts'],
 };

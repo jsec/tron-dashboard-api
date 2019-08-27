@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "nodemon --watch 'src/**/*' -e ts,tsx --exec ts-node src/index.ts",
+    "watch": "nodemon --watch 'src/**/*' -e ts,tsx --exec ts-node index.ts",
     "seed": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed"
   },
   "author": "",

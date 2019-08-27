@@ -1,5 +1,5 @@
-import app from './app/app';
-import databaseConnection from './lib/database/connection';
+import app from './src/app';
+import databaseConnection from './src/db/connection';
 
 const PORT: number = Number(process.env.PORT) || 3000;
 

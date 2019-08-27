@@ -1,6 +1,6 @@
 import * as Koa from 'koa';
 import * as HttpStatus from 'http-status-codes';
-import audioController from '../lib/audio/audio.controller';
+import audioController from './api/audio.controller';
 
 const app: Koa = new Koa();
 
