@@ -1,5 +1,5 @@
 import {readdirSync} from 'fs';
-import {join} from 'path';
+import {join, basename, extname} from 'path';
 import {Factory, Seeder} from 'typeorm-seeding';
 import {Connection} from 'typeorm/connection/Connection';
 import Audio from '../../models/audio';
@@ -11,18 +11,16 @@ export default class CreateAudios implements Seeder {
     let values: Audio[] = readdirSync(seedFolder).map(file => {
       let audio = new Audio();
       audio.filename = join(seedFolder, file);
-      audio.name = 'bleh';
+      audio.name = basename(file, extname(file));
 
       return audio;
     });
-
-    console.log(values);
 
     await connection
       .createQueryBuilder()
       .insert()
       .into(Audio)
-      .values([])
+      .values(values)
       .execute();
   }
 }
