@@ -1,8 +1,11 @@
 import * as Koa from 'koa';
+import * as cors from '@koa/cors';
 import * as HttpStatus from 'http-status-codes';
 import audioController from './api/audio.controller';
 
 const app: Koa = new Koa();
+
+app.use(cors());
 
 app.use(async (ctx: Koa.Context, next: () => Promise<any>) => {
   try {

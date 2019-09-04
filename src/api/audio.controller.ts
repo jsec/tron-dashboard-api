@@ -14,9 +14,7 @@ const router: Router = new Router(options);
 router.get('/', async (ctx: Koa.Context) => {
   const audioRepo: Repository<Audio> = getRepository(Audio);
   const audios = await audioRepo.find();
-  ctx.body = {
-    data: {audios},
-  };
+  ctx.body = {audios};
 });
 
 router.get('/:id', async (ctx: Koa.Context) => {
