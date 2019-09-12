@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import {createConnection, Connection} from 'typeorm';
+import { createConnection, Connection } from 'typeorm';
 
 const connection: Promise<Connection> = createConnection();
 

@@ -1,8 +1,8 @@
 import * as dotenv from 'dotenv';
-import {readdirSync} from 'fs';
-import {join, basename, extname} from 'path';
-import {Factory, Seeder} from 'typeorm-seeding';
-import {Connection} from 'typeorm/connection/Connection';
+import { readdirSync } from 'fs';
+import { join, basename, extname } from 'path';
+import { Factory, Seeder } from 'typeorm-seeding';
+import { Connection } from 'typeorm/connection/Connection';
 import Audio from '../../models/audio';
 
 export default class CreateAudios implements Seeder {

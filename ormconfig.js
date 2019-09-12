@@ -4,5 +4,5 @@ module.exports = {
   entities: ['./src/models/**/*.ts'],
   logging: true,
   synchronize: true,
-  seeds: ['src/db/seeds/**/*.ts'],
+  seeds: ['src/db/seeds/**/*.ts']
 };
