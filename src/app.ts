@@ -1,9 +1,13 @@
+import * as dotenv from 'dotenv';
 import * as Koa from 'koa';
 import * as cors from '@koa/cors';
 import * as HttpStatus from 'http-status-codes';
 import audioController from './api/audio.controller';
+import gitController from './api/git.controller';
 
 const app: Koa = new Koa();
+
+dotenv.config();
 
 app.use(cors());
 
@@ -21,6 +25,8 @@ app.use(async (ctx: Koa.Context, next: () => Promise<any>) => {
 
 app.use(audioController.routes());
 app.use(audioController.allowedMethods());
+app.use(gitController.routes());
+app.use(gitController.allowedMethods());
 
 app.use(async (ctx: Koa.Context) => {
   ctx.body = 'Hello World';
