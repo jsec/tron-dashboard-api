@@ -1,30 +1,26 @@
-import { WebApi } from 'azure-devops-node-api';
-import { IGitApi } from 'azure-devops-node-api/GitApi';
-import { GitPullRequest } from 'azure-devops-node-api/interfaces/GitInterfaces';
-import { getApi } from '../connections/git.connection';
+import { Injectable } from "@nestjs/common";
+import * as vm from "azure-devops-node-api";
+import { IGitApi } from "azure-devops-node-api/GitApi";
 
-export default class GitAdapter {
-  private _connection: IGitApi;
-
-  public async init(): Promise<void> {
-    const apiConnection: WebApi = await getApi();
-    this._connection = await apiConnection.getGitApi();
+@Injectable()
+export class GitAdapter {
+  public async init(): Promise<IGitApi> {
+    const connection: IGitApi = await (await this.getConnection()).getGitApi();
+    return connection;
   }
 
-  public async getPullRequests(): Promise<GitPullRequest[]> {
-    const repos = await this._connection.getRepositories(
-      process.env.AZURE_API_PROJECT_NAME
-    );
-
-    const repo = repos.find(
-      r => r.name === process.env.AZURE_API_REPOSITORY_NAME
-    );
-
-    const pullRequests: GitPullRequest[] = await this._connection.getPullRequests(
-      repo.id,
-      {}
-    );
-
-    return pullRequests;
+  private async getConnection(): Promise<vm.WebApi> {
+    return new Promise<vm.WebApi>(async (resolve, reject) => {
+      try {
+        const url = process.env.AZURE_API_URL;
+        const token = process.env.AZURE_API_TOKEN;
+        const authHandler = vm.getPersonalAccessTokenHandler(token);
+        const connection = new vm.WebApi(url, authHandler, null);
+        await connection.connect();
+        resolve(connection);
+      } catch (e) {
+        reject(e);
+      }
+    });
   }
 }
