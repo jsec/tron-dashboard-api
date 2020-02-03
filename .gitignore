@@ -2,4 +2,5 @@ tags
 node_modules/
 data/
 audio/
+dist/
 .env

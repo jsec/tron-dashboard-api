@@ -7,23 +7,22 @@ import * as player from "play-sound";
 @Injectable()
 export class AudioService {
   constructor(
-    @InjectRepository(Audio)
-    private readonly audioRepo: Repository<Audio>
+    @InjectRepository(Audio) private readonly audioRepository: Repository<Audio>
   ) {}
 
   public async getAudios(): Promise<Audio[]> {
-    return this.audioRepo.find();
+    return this.audioRepository.find();
   }
 
   public async playAudio(audioId: string): Promise<void> {
-    const audio: Audio = await this.audioRepo.findOne(audioId);
+    const audio: Audio = await this.audioRepository.findOne(audioId);
     player().play(audio.filename, (err: any) => console.error(err));
   }
 
   public createAudio(): void {}
 
   public async deleteAudio(audioId: string): Promise<void> {
-    const audio: Audio = await this.audioRepo.findOne(audioId);
-    this.audioRepo.delete(audio);
+    const audio: Audio = await this.audioRepository.findOne(audioId);
+    this.audioRepository.delete(audio);
   }
 }
