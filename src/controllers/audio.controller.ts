@@ -21,7 +21,7 @@ export class AudioController {
     return this.audioService.createAudio();
   }
 
-  @Delete("id")
+  @Delete(":id")
   async deleteAudio(@Param() params): Promise<void> {
     return this.audioService.deleteAudio(params.id);
   }
