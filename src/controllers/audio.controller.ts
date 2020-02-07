@@ -1,8 +1,9 @@
-import { Controller, Get, Param, Post, Delete } from "@nestjs/common";
-import { AudioService } from "../services/audio.service";
-import Audio from "../models/audio.model";
-import { AudioRequest } from "../interfaces/audio-request.interface";
+import { Controller, Get, Param, Post, Delete, Body } from "@nestjs/common";
 import { DeleteResult } from "typeorm";
+import { AudioCreateRequest } from "../interfaces/audio-create-request.interface";
+import { AudioRequest } from "../interfaces/audio-request.interface";
+import Audio from "../models/audio.model";
+import { AudioService } from "../services/audio.service";
 
 @Controller("audio")
 export class AudioController {
@@ -19,8 +20,8 @@ export class AudioController {
   }
 
   @Post()
-  createAudio(): void {
-    return this.audioService.createAudio();
+  createAudio(@Body() request: AudioCreateRequest): Audio {
+    return this.audioService.createAudio(request);
   }
 
   @Delete(":id")

@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, DeleteResult } from "typeorm";
 import Audio from "../models/audio.model";
+import { AudioCreateRequest } from "../interfaces/audio-create-request.interface";
 import * as player from "play-sound";
 
 @Injectable()
@@ -21,7 +22,9 @@ export class AudioService {
     player().play(audio.filename, (err: any) => console.error(err));
   }
 
-  public createAudio(): void {}
+  public createAudio(request: AudioCreateRequest): Audio {
+    return this.audioRepository.create(request);
+  }
 
   public async deleteAudio(audioId: string): Promise<DeleteResult> {
     const audio: Audio = await this.audioRepository.findOne(audioId);
