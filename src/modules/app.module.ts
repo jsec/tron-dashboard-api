@@ -1,10 +1,10 @@
-import { Module, MiddlewareConsumer } from "@nestjs/common";
-import { AudioModule } from "./audio.module";
-import { GitModule } from "./git.module";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { MorganMiddleware } from "@nest-middlewares/morgan";
-import { APP_FILTER } from "@nestjs/core";
-import { AllExceptionsFilter } from "../filters/http-exception.filter";
+import { Module, MiddlewareConsumer } from '@nestjs/common';
+import { AudioModule } from './audio.module';
+import { GitModule } from './git.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { MorganMiddleware } from '@nest-middlewares/morgan';
+import { APP_FILTER } from '@nestjs/core';
+import { AllExceptionsFilter } from '../filters/http-exception.filter';
 
 @Module({
   imports: [TypeOrmModule.forRoot(), AudioModule, GitModule],
@@ -17,8 +17,8 @@ import { AllExceptionsFilter } from "../filters/http-exception.filter";
   ]
 })
 export class AppModule {
-  configure(consumer: MiddlewareConsumer) {
-    MorganMiddleware.configure("dev");
-    consumer.apply(MorganMiddleware).forRoutes("/");
+  configure(consumer: MiddlewareConsumer): void {
+    MorganMiddleware.configure('dev');
+    consumer.apply(MorganMiddleware).forRoutes('/');
   }
 }
