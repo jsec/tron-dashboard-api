@@ -1,10 +1,11 @@
-import { Module, MiddlewareConsumer } from '@nestjs/common';
-import { AudioModule } from './audio.module';
-import { GitModule } from './git.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { MorganMiddleware } from '@nest-middlewares/morgan';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
+
 import { APP_FILTER } from '@nestjs/core';
 import { AllExceptionsFilter } from '../filters/http-exception.filter';
+import { AudioModule } from './audio.module';
+import { GitModule } from './git.module';
+import { MorganMiddleware } from '@nest-middlewares/morgan';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [TypeOrmModule.forRoot(), AudioModule, GitModule],

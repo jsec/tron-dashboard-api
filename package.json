@@ -21,7 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nest-middlewares/morgan": "^6.0.0",
+    "@nest-middlewares/morgan": "6.0.0",
     "@nestjs/common": "6.10.14",
     "@nestjs/core": "6.11.7",
     "@nestjs/platform-express": "6.11.6",
@@ -49,15 +49,23 @@
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.7.0",
     "eslint-plugin-import": "2.20.1",
+    "import-sort-style-eslint": "^6.0.0",
     "jest": "25.1.0",
     "prettier": "1.18.2",
+    "prettier-plugin-import-sort": "0.0.3",
     "supertest": "4.0.2",
     "ts-jest": "25.2.0",
     "ts-loader": "6.2.1",
     "ts-node": "8.6.0",
     "tsconfig-paths": "3.9.0",
     "typeorm-seeding": "1.2.0",
-    "typescript": "^3.7.4"
+    "typescript": "3.7.4"
+  },
+  "importSort": {
+    ".ts": {
+      "style": "eslint",
+      "parser": "typescript"
+    }
   },
   "jest": {
     "moduleFileExtensions": [

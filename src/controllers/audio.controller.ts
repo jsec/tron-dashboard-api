@@ -1,9 +1,10 @@
-import { Controller, Get, Param, Post, Delete, Body } from '@nestjs/common';
-import { DeleteResult } from 'typeorm';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+
+import Audio from '../models/audio.model';
 import { AudioCreateRequest } from '../interfaces/audio-create-request.interface';
 import { AudioRequest } from '../interfaces/audio-request.interface';
-import Audio from '../models/audio.model';
 import { AudioService } from '../services/audio.service';
+import { DeleteResult } from 'typeorm';
 
 @Controller('audio')
 export class AudioController {

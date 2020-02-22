@@ -1,9 +1,11 @@
+import * as player from 'play-sound';
+
+import { DeleteResult, Repository } from 'typeorm';
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, DeleteResult } from 'typeorm';
+
 import Audio from '../models/audio.model';
 import { AudioCreateRequest } from '../interfaces/audio-create-request.interface';
-import * as player from 'play-sound';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class AudioService {

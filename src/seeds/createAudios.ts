@@ -1,9 +1,11 @@
 import * as dotenv from 'dotenv';
-import { readdirSync } from 'fs';
-import { join, basename, extname } from 'path';
+
 import { Factory, Seeder } from 'typeorm-seeding';
-import { Connection } from 'typeorm/connection/Connection';
+import { basename, extname, join } from 'path';
+
 import Audio from '../models/audio.model';
+import { Connection } from 'typeorm/connection/Connection';
+import { readdirSync } from 'fs';
 
 export default class CreateAudios implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {

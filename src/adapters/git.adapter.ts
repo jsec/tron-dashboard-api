@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
 import * as vm from 'azure-devops-node-api';
+
 import { IGitApi } from 'azure-devops-node-api/GitApi';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class GitAdapter {

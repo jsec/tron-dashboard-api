@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { IGitApi } from 'azure-devops-node-api/GitApi';
 import { GitAdapter } from '../adapters/git.adapter';
 import { GitPullRequest } from 'azure-devops-node-api/interfaces/GitInterfaces';
+import { IGitApi } from 'azure-devops-node-api/GitApi';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class GitService {
